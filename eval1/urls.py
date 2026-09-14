@@ -21,5 +21,5 @@ from paginas_app.views import mostrar_home, mostrar_servicio
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', mostrar_home),
-    path('servicios/', mostrar_servicio),
+    path('servicio/', mostrar_servicio),
 ]
