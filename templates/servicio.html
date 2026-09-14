@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DriveX | Servicios</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b0d10;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        /* NAVBAR */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(11, 13, 16, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #25282d;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #e63946;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            transition: .3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #e63946;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 25px;
+
+            background:
+                linear-gradient(
+                    rgba(11, 13, 16, .65),
+                    rgba(11, 13, 16, .95)
+                ),
+                url("https://images.unsplash.com/photo-1486006920555-c77dcf18193c?auto=format&fit=crop&w=1800&q=80")
+                center/cover;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 7vw, 75px);
+            line-height: 1.05;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #e63946;
+        }
+
+        .hero p {
+            color: #ccc;
+            font-size: 19px;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        /* SERVICES */
+
+        .services {
+            max-width: 1200px;
+            margin: auto;
+            padding: 90px 25px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .section-title h2 {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+
+        .section-title p {
+            color: #999;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .service-card {
+            position: relative;
+            background: #15181d;
+            border: 1px solid #272b31;
+            border-radius: 12px;
+            padding: 35px;
+            overflow: hidden;
+            transition: .3s;
+        }
+
+        .service-card::before {
+            content: "";
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: #e63946;
+            border-radius: 50%;
+            top: -45px;
+            right: -45px;
+            opacity: .15;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: #e63946;
+        }
+
+        .icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(230, 57, 70, .12);
+            border-radius: 10px;
+            font-size: 30px;
+            margin-bottom: 25px;
+        }
+
+        .service-card h3 {
+            font-size: 23px;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: #999;
+            margin-bottom: 20px;
+        }
+
+        .service-card a {
+            color: #e63946;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .service-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* FEATURE */
+
+        .feature {
+            background: #15181d;
+            padding: 90px 25px;
+        }
+
+        .feature-container {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .feature-image img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .feature-text h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .feature-text h2 span {
+            color: #e63946;
+        }
+
+        .feature-text p {
+            color: #aaa;
+            margin-bottom: 25px;
+        }
+
+        .check-list {
+            list-style: none;
+        }
+
+        .check-list li {
+            margin-bottom: 15px;
+            color: #ddd;
+        }
+
+        .check-list li::before {
+            content: "✓";
+            display: inline-block;
+            color: #e63946;
+            font-weight: bold;
+            margin-right: 12px;
+        }
+
+        /* CTA */
+
+        .cta {
+            max-width: 1100px;
+            margin: 90px auto;
+            padding: 70px 30px;
+            text-align: center;
+            border-radius: 15px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #e63946,
+                    #a91e2a
+                );
+        }
+
+        .cta h2 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            max-width: 650px;
+            margin: 0 auto 30px;
+            color: #ffe8e9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            background: #fff;
+            color: #111;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            background: #f1f1f1;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid #25282d;
+            color: #777;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 850px) {
+
+            .service-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .feature-container {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-image {
+                order: 2;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 18px;
+                font-size: 14px;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                min-height: 55vh;
+            }
+
+            .cta h2,
+            .feature-text h2,
+            .section-title h2 {
+                font-size: 32px;
+            }
+
+            .feature-image img {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header>
+        <nav>
+
+            <div class="logo">
+                DRIVE<span>X</span>
+            </div>
+
+            <ul>
+                <li>
+                    <a href="index.html">Inicio</a>
+                </li>
+
+                <li>
+                    <a href="servicio.html" class="active">Servicios</a>
+                </li>
+
+            </ul>
+
+        </nav>
+    </header>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>
+                Servicios para tu
+                <span>vehículo.</span>
+            </h1>
+
+            <p>
+                {{nombre}}
+                {{valor}}
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- SERVICES -->
+
+    <section class="services">
+
+        <div class="section-title">
+
+            <h2>¿Qué podemos hacer por ti?</h2>
+
+            <p>
+                Un servicio completo para cuidar cada detalle de tu vehículo.
+            </p>
+
+        </div>
+
+
+        <div class="service-grid">
+
+            <!-- SERVICE 1 -->
+
+            <article class="service-card">
+
+                <div class="icon">
+                    🔧
+                </div>
+
+                <h3>
+                    Mantención
+                </h3>
+
+                <p>
+                    Revisiones preventivas y mantenimiento para que tu
+                    vehículo se mantenga siempre en las mejores condiciones.
+                </p>
+
+                <a href="#">
+                    Ver servicio →
+                </a>
+
+            </article>
+
+
+            <!-- SERVICE 2 -->
+
+            <article class="service-card">
+
+                <div class="icon">
+                    🚘
+                </div>
+
+                <h3>
+                    Compra de vehículos
+                </h3>
+
+                <p>
+                    Encuentra vehículos seleccionados de acuerdo con tus
+                    necesidades, presupuesto y estilo de vida.
+                </p>
+
+                <a href="#">
+                    Ver vehículos →
+                </a>
+
+            </article>
+
+
+            <!-- SERVICE 3 -->
+
+            <article class="service-card">
+
+                <div class="icon">
+                    💰
+                </div>
+
+                <h3>
+                    Tasación
+                </h3>
+
+                <p>
+                    Conoce el valor estimado de tu vehículo mediante una
+                    evaluación profesional y transparente.
+                </p>
+
+                <a href="#">
+                    Solicitar tasación →
+                </a>
+
+            </article>
+
+
+            <!-- SERVICE 4 -->
+
+            <article class="service-card">
+
+                <div class="icon">
+                    🛠️
+                </div>
+
+                <h3>
+                    Reparaciones
+                </h3>
+
+                <p>
+                    Soluciones mecánicas y técnicas para devolverle a tu
+                    vehículo su rendimiento y seguridad.
+                </p>
+
+                <a href="#">
+                    Ver servicio →
+                </a>
+
+            </article>
+
+
+            <!-- SERVICE 5 -->
+
+            <article class="service-card">
+
+                <div class="icon">
+                    ✨
+                </div>
+
+                <h3>
+                    Detailing
+                </h3>
+
+                <p>
+                    Limpieza y cuidado especializado para recuperar el
+                    aspecto interior y exterior de tu vehículo.
+                </p>
+
+                <a href="#">
+                    Conocer detailing →
+                </a>
+
+            </article>
+
+
+            <!-- SERVICE 6 -->
+
+            <article class="service-card">
+
+                <div class="icon">
+                    ⚡
+                </div>
+
+                <h3>
+                    Tecnología EV
+                </h3>
+
+                <p>
+                    Asesoría y soluciones para vehículos eléctricos e
+                    híbridos de nueva generación.
+                </p>
+
+                <a href="#">
+                    Saber más →
+                </a>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURE -->
+
+    <section class="feature">
+
+        <div class="feature-container">
+
+            <div class="feature-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1000&q=80"
+                    alt="Taller automotriz"
+                >
+
+            </div>
+
+
+            <div class="feature-text">
+
+                <h2>
+                    Cuidamos tu vehículo
+                    <span>como si fuera nuestro.</span>
+                </h2>
+
+                <p>
+                    En DriveX combinamos experiencia, tecnología y
+                    atención personalizada para ofrecer una experiencia
+                    diferente a la hora de mantener tu automóvil.
+                </p>
+
+                <ul class="check-list">
+
+                    <li>
+                        Profesionales especializados
+                    </li>
+
+                    <li>
+                        Diagnóstico y atención personalizada
+                    </li>
+
+                    <li>
+                        Procesos transparentes
+                    </li>
+
+                    <li>
+                        Tecnología aplicada al automóvil
+                    </li>
+
+                    <li>
+                        Compromiso con la calidad
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+
+    <section class="cta">
+
+        <h2>
+            ¿Listo para llevar tu vehículo al siguiente nivel?
+        </h2>
+
+        <p>
+            Nuestro equipo está preparado para ayudarte a encontrar
+            la solución que necesitas.
+        </p>
+
+        <a href="#" class="btn">
+            Contactar con DriveX
+        </a>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 DriveX — Innovación sobre cuatro ruedas.
+        </p>
+
+    </footer>
+
+</body>
+</html>
+
