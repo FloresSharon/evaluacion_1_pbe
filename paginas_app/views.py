@@ -8,7 +8,7 @@ def mostrar_home(request):
 def mostrar_servicio(request):
     datos = {
         "nombre1": "Lavado de vehículos",
-        "valor": 10000,
+        "valor1": 10000,
         "nombre2": "Aspiración",
         "valor2": 5000,
         "nombre3": "Inflar llantas",
